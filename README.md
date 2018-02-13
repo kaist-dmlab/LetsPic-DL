@@ -1,27 +1,25 @@
-# RP-DBSCAN: A Superfast Parallel DBSCAN Algorithm Based on Random Partitioning
+# LetsPic-DL: Distributed Fine-Tuning of CNNsfor Image Retrieval on Multiple Mobile Devices
 ## 1. Overview
-Following the recent trends in big data processing, several parallel DBSCAN algorithms have been reported in the literature. In most such algorithms, neighboring points are assigned to the same data partition for parallel processing to facilitate calculation of the density of the neighbors. This data partitioning scheme causes a few critical problems including load imbalance between data partitions, especially in a skewed data set. To remedy these problems, we propose a cell-based data partitioning scheme, pseudo random partitioning, that randomly distributes small cells rather than the points themselves. It achieves high load balance regardless of data skewness while retaining the data contiguity required for DBSCAN. In addition, we build and broadcast a highly compact summary of the entire data set, which we call a two-level cell dictionary, to supplement random partitions. Then, we develop a novel parallel DBSCAN algorithm, Random Partitioning-DBSCAN (shortly, RPDBSCAN), that uses pseudo random partitioning together with a two-level cell dictionary. The algorithm simultaneously finds the local clusters to each data partition and then merges these local clusters to obtain global clustering. To validate the merit of our approach, we implement RP-DBSCAN on Spark and conduct extensive experiments using various real-world data sets on 12 Microsoft Azure machines (48 cores). In RP-DBSCAN, data partitioning and cluster merging are very light, and clustering on each split is not dragged out by a specific worker. Therefore, the performance results show that RP-DBSCAN significantly outperforms the state-of-the-art algorithms by up to 180 times.
+The high performance of mobile devices has enabled deep learningto be extended to also exploit its strengths on such devices. However, because their computing power is not yet sufficient to perform on-device training, a pre-trained model is usually downloaded to mobile devices, and only inference is performed on them. This sit-uation leads to the problem that accuracy may be degraded if the characteristics of the data for training and those for inference are sufficiently different. In general, fine-tuning allows a pre-trained model to adapt to a given data set, but it has also been perceived as difficult on mobile devices. In this paper, we introduce our on-going effort to improve the quality of mobile deep learning by enabling fine-tuning on mobile devices. In order to reduce its cost to a level that can be operated on mobile devices, alight-weight fine-tuning method is proposed, and its cost is further reduced by using dis-tributing computing on mobile devices. The proposed technique has been applied to LetsPic-DL, a group photoware application under development in our research group. It required only 24 seconds to fine-tune a pre-trained MobileNet with 100 photos on five Galaxy S8 units, resulting in an excellent image retrieval accuracy reflected a 27–35% improvement.
 
-## 2. Algorithms
-- DBSCAN [1] : 
-- SPARK-DBSCAN [2] : 
-- ESP-DBSCAN [3] : 
-- RBP-DBSCAN [4] : 
-- CBP-DBSCAN [5] : 
-- NG-DBSCAN [6] : 
-
-## 3. Data Sets
-| Name           | # Object       | # Dim    | Size    | Type  |  Link   |
-| :------------: | :------------: | :------: |:-------:|:-----:|:-------:|
-| GeoLife        | 24,876,978     | 3        | 808 MB  | float |         |
-| Cosmo50        | 315,086,245    | 3        | 11.2 GB | float |         |
-| OpenStreetMap  | 2,770,238,904  | 2        | 77.1 GB | float |         |
-| TeraClickLog   | 4,373,472,329  | 13       | 362 GB  | float |         |
-
-## 4. Configuration
-
-## 5. How to run
-
-## 6. Example
-
-## 7. Experiment
+## 2. How to configure
+	1. Download the source.
+	2. Open the 'MainActivity.java'
+	3. Set the 'new CnnMobilenetTrainJob(3, 11, 5)' at a 99th line according to your preference.
+		- CnnMobilenetTrainJob(Epoch, IterationPerEpoch, NumDevices)
+			- Epoch: the number of epoch to finetune the model, which means the number of MapReduce job
+			- IterationPerEpoch: the number of iteration per each epoch, which means the number of train dataset stored on a device divided by 15(defualt batch size)
+			- NumDevices: the number of devices to finetune the model together
+	4. Place train dataset in '/cnnMobilenetTrainDemo/LFS' folder of each device
+	5. Run application
+	
+## 3. How to run 
+	1. One user creates Group by clicking 'Create Group/Join Group' button. The other users join the group by clicking the same button.
+	2. One of users clicks the 'Start Finetuning' button to finetune MobileNets model.
+	
+## 4. Data Sets
+| Name           | Content  |  # Categories  |# Photos |
+| :------------: | :-------:| :------------: |:-------:|
+| Cifar100       | various  |       100      | 60,000  | 
+| Food-101       |   food   |       101      | 101,000 | 
+| Caltech-Faces  |   face   |        27      |   450   | 

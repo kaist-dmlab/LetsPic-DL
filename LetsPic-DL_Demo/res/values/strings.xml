@@ -1,12 +1,12 @@
 <resources>
 
     <string name="app_name">CnnMobilenetTrainDemo</string>
-    <string name="create_or_enter_group">그룹 생성/참여</string>
-    <string name="exit_group">그룹 탈퇴</string>
-    <string name="show_dfs_info">분산 파일 보기</string>
-    <string name="format_dfs">분산 파일 포맷</string>
-    <string name="distribute">분배</string>
-    <string name="etc">기타</string>
-    <string name="start">시작</string>
+    <string name="create_or_enter_group">Create Group/Join Group</string>
+    <string name="exit_group">Leave Group</string>
+    <string name="show_dfs_info">Check Distributed Files</string>
+    <string name="format_dfs">Format Distributed Files</string>
+    <string name="distribute">Distribution</string>
+    <string name="etc">ETC</string>
+    <string name="start">Start Finetuning</string>
 
 </resources>
