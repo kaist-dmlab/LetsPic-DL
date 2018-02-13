@@ -35,12 +35,12 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_activity);
 
-		// Helper 초기화
+		// Helper Initialization
 		clientHelper = new ImageDbClientHelper(this);
 		clientHelper.onCreate(savedInstanceState, getString(R.string.app_name), new CnnMobilenetAndroidInitializer2());
 		imageDbHelper = new ImageDbHelper(clientHelper);
 
-		// 뷰 연결
+		// Connect View
 		btnCreateOrEnterGroup = (Button) findViewById(R.id.btnCreateOrEnterGroup);
 		btnExitGroup = (Button) findViewById(R.id.btnExitGroup);
 		tvDaemonStatus = (TextView) findViewById(R.id.tvDaemonStatus);
@@ -76,12 +76,12 @@ public class MainActivity extends Activity {
 	}
 
 	public void onBtnCreateOrEnterGroup(View v) {
-		// 서비스 시작
+		// Start Service
 		clientHelper.startDaemon();
 	}
 
 	public void onBtnExitGroup(View v) {
-		// 서비스 종료
+		// Terminate Service
 		clientHelper.stopDaemon();
 	}
 
@@ -110,30 +110,30 @@ public class MainActivity extends Activity {
 		public void updateViews() {
 			String daemonStatus = "";
 
-			// 그룹 가입 여부에 따라 다른 뷰 레이아웃을 출력한다.
+			// Different view layouts outputs depending on whether user joins group or not
 			if (amIInGroup()) {
 				btnCreateOrEnterGroup.setEnabled(false);
 				btnExitGroup.setEnabled(true);
 				btnStartJob.setEnabled(true);
 
-				daemonStatus += "그룹 가입 : TRUE";
+				daemonStatus += "Join Group : TRUE";
 
 			} else {
 				btnCreateOrEnterGroup.setEnabled(true);
 				btnExitGroup.setEnabled(false);
 				btnStartJob.setEnabled(false);
 
-				daemonStatus += "그룹 가입 : FALSE";
+				daemonStatus += "Join Group : FALSE";
 				tvGroupList.setText("");
 				tvJobStatus.setText("");
 			}
 
 			daemonStatus += " / ";
 			if (isDaemonBusy()) {
-				daemonStatus += "데몬 BUSY : TRUE";
+				daemonStatus += "Daemon BUSY : TRUE";
 
 			} else {
-				daemonStatus += "데몬 BUSY : FALSE";
+				daemonStatus += "Daemon BUSY : FALSE";
 			}
 			tvDaemonStatus.setText(daemonStatus);
 
