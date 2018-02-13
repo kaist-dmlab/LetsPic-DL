@@ -1,0 +1,44 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cloudlet.cnnmobilenettrain"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <!-- minSdkVersion : Theme.Holo.Light / android:largeHeap 때문에 11 이상 -->
+    <!-- Bitmap.getByteCount() 때문에 12 이상 -->
+    <!-- Tensorflow 때문에 18 이상 -->
+    <!-- targetSdkVersion : 23 부터는 mkdir 등에서 권한을 동적으로 요구함 -->
+    <uses-sdk
+        android:minSdkVersion="18"
+        android:targetSdkVersion="22" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.cloudlet.cnnmobilenettrain.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.cloudlet.base.android.DfsMapActivity" />
+
+        <service
+            android:name="com.cloudlet.base.android.DaemonService"
+            android:exported="false" />
+
+        <!-- RequestFramework 관련 부분 -->
+        <meta-data
+            android:name="com.cappuccino.requestframework.debuggable"
+            android:value="false" />
+    </application>
+
+</manifest>

@@ -1,0 +1,26 @@
+<requests>
+   <request name="Main">
+      <item>
+         <type>POST</type>
+         <endpoint>http://143.248.90.69:8080/main</endpoint>
+         <cookieNeedLoaded>false</cookieNeedLoaded>
+         <cookieNeedSaved>false</cookieNeedSaved>
+         <errorKeyAlwaysReturned>false</errorKeyAlwaysReturned>
+         <ssErrorCheckKey>err_msg</ssErrorCheckKey>
+      </item>
+   </request>
+   <request name="Report">
+      <item>
+         <type>POST</type>
+         <endpoint>http://143.248.90.69:8080/report</endpoint>
+         <cookieNeedLoaded>false</cookieNeedLoaded>
+         <cookieNeedSaved>false</cookieNeedSaved>
+         <errorKeyAlwaysReturned>false</errorKeyAlwaysReturned>
+         <ssErrorCheckKey>err_msg</ssErrorCheckKey>
+         <request_map>
+            <variable name="id">id</variable>
+            <variable name="report">report</variable>
+         </request_map>
+      </item>
+   </request>
+</requests>
