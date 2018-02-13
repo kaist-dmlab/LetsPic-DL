@@ -11,6 +11,7 @@ The high performance of mobile devices has enabled deep learningto be extended t
 			- IterationPerEpoch: the number of iteration per each epoch, which means the number of train dataset stored on a device divided by 15(defualt batch size)
 			- NumDevices: the number of devices to finetune the model together
 	4. Place train dataset in '/cnnMobilenetTrainDemo/LFS' folder of each device
+	   (Name of dataset file on each device should be changed to 'train_images')
 	5. Run application
 	
 ## 3. How to run 
