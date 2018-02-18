@@ -17,7 +17,7 @@ The high performance of mobile devices has enabled deep learningto be extended t
 ## 3. How to run 
 	1. Click 'Create Group/Join Group' button to create the group(Group Owner). 
 	2. Click the same button to  join the group(the other users).
-	2. Clicks the 'Start Finetuning' button to finetune MobileNets model.
+	2. Click 'Start Finetuning' button to finetune MobileNets model.
 	
 ## 4. Data Sets
 | Name           | Content  |  # Categories  |# Photos |
